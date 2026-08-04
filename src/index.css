@@ -1,0 +1,245 @@
+/** @format */
+
+@import url("/fonts.css");
+
+@import "tailwindcss";
+
+@theme {
+  /*primary */
+  --color-primary-light: var(--color-violet-400);
+  --color-primary: var(--color-violet-600);
+  --color-second-primary: var(--color-violet-200);
+  --color-bg-primary: var(--color-violet-100) ;
+  --color-secondary: var(--color-gray-600);
+  --color-secondary-light: var(--color-gray-400);
+  --color-secondary-2: var(--color-gray-500);
+  --color-text-secondary: var(--color-gray-800);
+  --color-border-secondary: var(--color-gray-300);
+  --color-label-secondary: var(--color-gray-400);
+  --color-bg-secondary: var(--color-gray-50);
+
+  /*otp code*/
+  --color-success: var(--color-green-500);
+}
+@variant dark (&:where(.dark, .dark *));
+
+.dark {
+  --color-primary: var(
+    --color-violet-400
+  ); /* در دارک مود کمی روشن‌تر برای خوانایی */
+  --color-second-primary: var(--color-violet-800);
+
+  --color-bg-primary: var(--color-slate-900); /* پس‌زمینه تیره */
+  --color-bg-secondary: var(--color-slate-800);
+
+  --color-text-secondary: var(
+    --color-gray-200
+  ); /* متن روشن برای پس‌زمینه تیره */
+  --color-secondary: var(--color-gray-300);
+  --color-border-secondary: var(--color-slate-700);
+  --color-label-secondary: var(--color-gray-500);
+}
+
+/*Creating Custom Components*/
+@layer components {
+  .input-base {
+    @apply w-full border-b-2 border-border-secondary bg-transparent  outline-none 
+           transition-all duration-300 placeholder-transparent focus:border-violet-600 text-gray-500;
+  }
+  .label-base {
+    @apply absolute right-0 top-0  text-label-secondary transition-all duration-300 font-bold;
+  }
+
+  .btn-primary {
+    @apply bg-primary-light w-full text-white px-6 py-2 rounded-lg hover:bg-primary transition;
+  }
+  .btn-secondary {
+    @apply bg-text-secondary text-white px-4 py-1  rounded-lg hover:bg-secondary transition;
+  }
+  .badge {
+    @apply inline-block whitespace-nowrap rounded-xl px-2 py-0.5;
+  }
+  .badge--primary {
+    @apply bg-violet-100;
+  }
+  .badge--success {
+    @apply bg-green-500 text-white;
+  }
+  .badge--secondary {
+    @apply bg-gray-400 text-white;
+  }
+  .badge--danger {
+    @apply bg-red-500 text-white;
+  }
+  .dropdown-item {
+    @apply relative block px-4 py-3 text-secondary-2
+    transition-all duration-300
+    hover:bg-primary/50 hover:text-white;
+  }
+
+  .dropdown-item::before {
+    content: "";
+    @apply absolute left-0 top-2 bottom-2 w-1 rounded-r-full
+    bg-white opacity-0 transition-all duration-300;
+  }
+
+  .dropdown-item:hover::before {
+    @apply opacity-100;
+  }
+}
+
+html,
+body {
+  font-family: "Vazir";
+  min-height: 100vh;
+  user-select: none;
+  background-color: rgb(var(--background-app-rgb));
+  overflow-y:auto!important; /* همیشه فضای اسکرول‌بار را رزرو می‌کند تا پرش ایجاد نشود */
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  outline: none;
+  /*padding: 0;
+  margin: 0;*/
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+}
+button:disabled {
+  cursor: default;
+  background-color: rgb(var(--color-secondary-100), 0.5);
+  pointer-events: none;
+  box-shadow: none;
+}
+
+/* inupt number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* TABLE */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table td,
+table th {
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+table th {
+  padding: 0.6rem 1rem;
+  color: rgb(var(--color-secondary-600));
+  font-size: 0.9rem;
+}
+
+table td {
+  font-size: 0.85rem;
+  padding: 1rem 0.5rem;
+  color: #8b8791;
+  font-weight: 700;
+}
+
+/*  react tag input */
+.input-style {
+  width: 48px !important;
+  height: 48px !important;
+  text-align: center;
+  border: 2px solid transparent;
+  color: var(--color-secondary);
+  border-radius: 0.5rem;
+  background-color: var(--color-background-secondary);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease-in-out;
+}
+
+.input-style:focus {
+  outline: none;
+  border-color: var(--color-primary-light);
+  transform: scale(1.05);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 425px) {
+  .input-style {
+    width: 30px !important;
+    height: 35px !important;
+  }
+}
+
+.rti--container {
+  width: 16rem;
+  min-height: 44px;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  color: #4b4c4d;
+  gap: 0.5rem;
+  align-items: center;
+  background-color: var(--color-bg-secondary);
+}
+
+.rti--container:focus-within {
+  border-color: #bfa2f1;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.15);
+}
+
+.rti--input {
+  flex: 1;
+  background: transparent;
+}
+
+.rti--tag {
+  background: var(--color-primary-light);
+  color: white;
+  border-radius: 9999px;
+  padding: 2px 8px;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.deadline-input {
+  background-color: var(--color-bg-secondary);
+  padding: 2px 9px;
+  font-size: 13px;
+  color: #4b4c4d;
+  width: 16rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  outline: none;
+}
+
+.deadline-input:focus {
+  border-color: #bfa2f1;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.15);
+}
+
+.datepickerlabel {
+  color: #7c3aed;
+  font-size: 13px;
+}
