@@ -4,9 +4,9 @@
 
 @import "tailwindcss";
 
-@theme {
+/*@theme {
   /*primary */
-  --color-primary-light: var(--color-violet-400);
+/* --color-primary-light: var(--color-violet-400);
   --color-primary: var(--color-violet-600);
   --color-second-primary: var(--color-violet-200);
   --color-bg-primary: var(--color-violet-100) ;
@@ -19,25 +19,71 @@
   --color-bg-secondary: var(--color-gray-50);
 
   /*otp code*/
-  --color-success: var(--color-green-500);
+/* --color-success: var(--color-green-500);
+}*/
+
+@theme {
+  /* Dynamic Theme Color  */
+  --color-primary-light: var(--primary-light);
+  --color-primary: var(--primary);
+  --color-second-primary: var(--second-primary);
+  --color-bg-primary: var(--bg-primary);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-2: var(--secondary-2);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-secondary: var(--border-secondary);
+  --color-label-secondary: var(--label-secondary);
+  --color-bg-secondary: var(--bg-secondary);
+
+  /* Status Colors */
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
 }
+
 @variant dark (&:where(.dark, .dark *));
 
+/*  Light Mode  */
+:root,
+.light {
+  --primary-light: #a78bfa; /* violet-400 */
+  --primary: #7c3aed; /* violet-600 */
+  --second-primary: #ddd6fe; /* violet-200 */
+  --bg-primary: #ede9fe; /* violet-100 */
+
+  --secondary: #4b5563; /* gray-600 */
+  --secondary-light: #9ca3af; /* gray-400 */
+  --secondary-2: #6b7280; /* gray-500 */
+  --text-secondary: #1f2937; /* gray-800 */
+  --border-secondary: #e5e7eb; /* gray-300 */
+  --label-secondary: #9ca3af; /* gray-400 */
+  --bg-secondary: #f9fafb; /* gray-50 */
+
+  --success: #22c55e; /* green-500 */
+  --danger: #ef4444; /* red-500 */
+  --warning: #f59e0b; /* amber-500 */
+}
+
+/* Dark Mode */
 .dark {
-  --color-primary: var(
-    --color-violet-400
-  ); /* در دارک مود کمی روشن‌تر برای خوانایی */
-  --color-second-primary: var(--color-violet-800);
+  --primary-light: #c4b5fd; /* violet-300 */
+  --primary: #8b5cf6; /* violet-500 (روشن‌تر برای خوانایی در پس‌زمینه تیره) */
+  --second-primary: #4c1d95; /* violet-900 */
+  --bg-primary: #0f172a; /* slate-900 */
 
-  --color-bg-primary: var(--color-slate-900); /* پس‌زمینه تیره */
-  --color-bg-secondary: var(--color-slate-800);
+  --secondary: #d1d5db; /* gray-300 */
+  --secondary-light: #6b7280; /* gray-500 */
+  --secondary-2: #9ca3af; /* gray-400 */
+  --text-secondary: #f3f4f6; /* gray-100 */
+  --border-secondary: #334155; /* slate-700 */
+  --label-secondary: #6b7280; /* gray-500 */
+  --bg-secondary: #1e293b; /* slate-800 */
 
-  --color-text-secondary: var(
-    --color-gray-200
-  ); /* متن روشن برای پس‌زمینه تیره */
-  --color-secondary: var(--color-gray-300);
-  --color-border-secondary: var(--color-slate-700);
-  --color-label-secondary: var(--color-gray-500);
+  --success: #4ade80; /* green-400 */
+  --danger: #f87171; /* red-400 */
+  --warning: #fbbf24; /* amber-400 */
 }
 
 /*Creating Custom Components*/
@@ -94,7 +140,7 @@ body {
   min-height: 100vh;
   user-select: none;
   background-color: rgb(var(--background-app-rgb));
-  overflow-y:auto!important; /* همیشه فضای اسکرول‌بار را رزرو می‌کند تا پرش ایجاد نشود */
+  overflow-y: auto !important; /* همیشه فضای اسکرول‌بار را رزرو می‌کند تا پرش ایجاد نشود */
 }
 
 * {
