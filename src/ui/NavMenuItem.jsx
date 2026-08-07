@@ -12,7 +12,7 @@ const NavMenuItem = ({ to, label, icon: Icon }) => {
           ${
             isActive ?
               "border-primary bg-primary/10 text-primary"
-            : "border-transparent text-slate-600 hover:bg-slate-50 hover:border-slate-300"
+            : "border-transparent text-secondary  hover:border-border-secondary hover:text-primary"
           }
         `}
       >

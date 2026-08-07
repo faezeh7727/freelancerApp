@@ -10,14 +10,13 @@ export default function RadioInput({
   validationSchema,
   watch,
 }) {
-
-   const isChecked = watch(name) === value;
+  const isChecked = watch(name) === value;
   return (
     <label
       className={`flex items-center gap-2 cursor-pointer p-3 rounded-lg border transition-all ${
         isChecked ?
-          "border-primary bg-primary/5 text-primary"
-        : "border-border-secondary bg-white text-gray-600 hover:border-gray-300"
+          "border-primary bg-primary/10 text-primary"
+        : "border-border-secondary bg-bg-secondary text-text-secondary hover:border-primary/50"
       }`}
     >
       <input
@@ -28,12 +27,11 @@ export default function RadioInput({
         className="hidden"
       />
       <div
-        className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${isChecked ? "border-primary" : "border-gray-400"}`}
+        className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${isChecked ? "border-primary" : "border-secondary-light"}`}
       >
         {isChecked && <div className="w-2 h-2 rounded-full bg-primary" />}
       </div>
       <span className="text-sm font-medium">{label}</span>
-      
     </label>
   );
 }

@@ -9,28 +9,40 @@ import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { data } from "react-router-dom";
 export default function AuthContainer() {
+  const [step, setStep] = useState(1);
+  const [resendCounter, setResendCounter] = useState(0);
+
   const {
     isPending: isSendingOtp,
     data: otpResponse,
     mutateAsync,
   } = useMutation({
-    //mutation function
     mutationFn: GetOtp,
   });
-
+  const { handleSubmit, register, getValues } = useForm();
+//send otp handler
   const SendOtpHandler = async (data) => {
     try {
-      const {message} = await mutateAsync(data);
+      await mutateAsync(data);
       setStep(2);
-      //toast.success(data.message);
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
   };
 
-  const [step, setStep] = useState(1);
-  //const [phoneNumber, SetPhoneNumber] = useState("09181111111");
-  const { handleSubmit, register, getValues } = useForm();
+  // resend handler
+  const handleResendOtp = async () => {
+    const phoneNumber = getValues("phoneNumber");
+    try {
+      await mutateAsync({ phoneNumber });
+      toast.success("کد تایید مجدداً ارسال شد");
+
+      setResendCounter((prev) => prev + 1);
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
+  };
+
   const renderStep = () => {
     switch (step) {
       case 1:
@@ -45,14 +57,14 @@ export default function AuthContainer() {
       case 2:
         return (
           <CheckOTPForm
-            onResendOtp={SendOtpHandler}
+            key={resendCounter} 
+            onResendOtp={handleResendOtp}
             phoneNumber={getValues("phoneNumber")}
             onBack={() => setStep((step) => step - 1)}
             otpResponse={otpResponse}
             isSendingOtp={isSendingOtp}
           />
         );
-
       default:
         return null;
     }

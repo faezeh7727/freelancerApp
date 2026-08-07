@@ -1,4 +1,3 @@
-/** @format */
 
 import { Listbox } from "@headlessui/react";
 import { IoChevronDown, IoCheckmark } from "react-icons/io5";
@@ -26,25 +25,25 @@ export default function RHFSelect({
           <Listbox value={field.value} onChange={field.onChange}>
             <div className="relative">
               {/* دکمه انتخاب */}
-              <Listbox.Button className="relative w-full py-2.5 pr-3 pl-10 text-right bg-white border border-gray-200 rounded-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/20">
+              <Listbox.Button className="relative w-full py-2.5 pr-3 pl-10 text-right bg-bg-secondary border border-border-secondary text-text-secondary rounded-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/20">
                 <span className="block truncate text-primary">
                   {options.find((o) => o.value === field.value)?.label ||
                     "انتخاب کنید"}
                 </span>
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <IoChevronDown className="text-gray-500" />
+                  <IoChevronDown className="text-secondary" />
                 </span>
               </Listbox.Button>
 
               {/* لیست گزینه‌ها */}
-              <Listbox.Options className="absolute z-10 w-full py-1 mt-1 overflow-auto bg-white border-2  border-border-secondary rounded-lg shadow-lg max-h-60 ring-1  ring-opacity-5 focus:outline-none">
+              <Listbox.Options className="absolute z-10 w-full py-1 mt-1 overflow-auto bg-bg-secondary border-2 border-border-secondary text-text-secondary rounded-lg shadow-lg max-h-60 ring-1 ring-opacity-5 focus:outline-none">
                 {options.map((option) => (
                   <Listbox.Option
                     key={option.value}
                     value={option.value}
                     className={({ active }) =>
                       `relative cursor-pointer select-none py-2 px-4 ${
-                        active ? "bg-primary/10 text-primary" : "text-gray-900"
+                        active ? "bg-primary/10 text-primary" : "text-text-secondary"
                       }`
                     }
                   >

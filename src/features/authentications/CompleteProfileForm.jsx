@@ -39,7 +39,10 @@ export default function CompleteProfileForm() {
   };
 
   return (
-    <div className="p-5">
+    <div className="p-4 sm:p-6 w-full max-w-md mx-auto" dir="rtl">
+      <h1 className="text-xl text-text-secondary font-bold text-center mb-6">
+        تکمیل اطلاعات پروفایل
+      </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-6 items-center"
@@ -68,11 +71,11 @@ export default function CompleteProfileForm() {
           errors={errors}
         />
 
-        <div className="text-sm text-text-secondary font-bold">
-          انتخاب نوع فعالیت
+        <div className="text-sm text-text-secondary font-bold self-start sm:self-center">
+          انتخاب نوع فعالیت:
         </div>
 
-        <div className="flex  gap-4">
+        <div className="flex gap-4">
           <RadioInputGroup
             errors={errors}
             register={register}
@@ -93,8 +96,8 @@ export default function CompleteProfileForm() {
         <div className="w-full mt-3">
           {isPending ?
             <Loading />
-          : <button type="submit" className="btn-primary ">
-              تایید
+          : <button type="submit" className="btn-primary">
+              تایید و ادامه
             </button>
           }
         </div>

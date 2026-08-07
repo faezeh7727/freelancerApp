@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar";
 import { Logo } from "./Logo";
 import { BsList, BsX } from "react-icons/bs";
 
-export default function AppLayout() {
+export default function AppLayout({children}) {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   return (
     <div
@@ -14,9 +14,9 @@ export default function AppLayout() {
       className="mx-auto h-screen w-full max-w-7xl flex flex-col lg:grid lg:grid-cols-[15rem_1fr] lg:grid-rows-[auto_1fr] "
     >
       {/**sidbar */}
-      <aside
+     <aside
         className={`
-  fixed top-0 right-0 z-[60] h-full w-64 bg-white shadow-2xl p-5 
+  fixed top-0 right-0 z-[60] h-full w-64 bg-bg-secondary shadow-2xl p-5 
   transform transition-transform duration-300 ease-in-out
   ${isSidebarOpen ? "translate-x-0" : "translate-x-full"}
   lg:translate-x-0 lg:relative lg:shadow-none
@@ -43,13 +43,11 @@ export default function AppLayout() {
             </button>
           </div>
         </div>
-
         <nav>
-          <Sidebar />
+         {/* <Sidebar />*/}
+         {children}
         </nav>
       </aside>
-
-      {/* Overlay  */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-[55] lg:hidden"
@@ -57,11 +55,10 @@ export default function AppLayout() {
         />
       )}
 
-      {/* header & content*/}
       <div className="flex flex-col flex-1 md:px-5">
         <header className="sticky top-0 z-50 flex items-center justify-between
   border-b border-border-secondary
-  bg-white/20 backdrop-blur-md p-4">
+border-white/20 backdrop-blur-md p-4 ">
           <button
             className="lg:hidden  text-secondary"
             onClick={() => setSidebarOpen(true)}
@@ -79,3 +76,5 @@ export default function AppLayout() {
     </div>
   );
 }
+ 
+

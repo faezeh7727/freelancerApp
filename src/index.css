@@ -1,5 +1,5 @@
 /** @format */
-
+/*
 @import url("/fonts.css");
 
 @import "tailwindcss";
@@ -22,9 +22,9 @@
 /* --color-success: var(--color-green-500);
 }*/
 
-@theme {
+/*@theme {
   /* Dynamic Theme Color  */
-  --color-primary-light: var(--primary-light);
+ /* --color-primary-light: var(--primary-light);
   --color-primary: var(--primary);
   --color-second-primary: var(--second-primary);
   --color-bg-primary: var(--bg-primary);
@@ -38,7 +38,7 @@
   --color-bg-secondary: var(--bg-secondary);
 
   /* Status Colors */
-  --color-success: var(--success);
+ /* --color-success: var(--success);
   --color-danger: var(--danger);
   --color-warning: var(--warning);
 }
@@ -46,48 +46,32 @@
 @variant dark (&:where(.dark, .dark *));
 
 /*  Light Mode  */
-:root,
+/*:root,
 .light {
   --primary-light: #a78bfa; /* violet-400 */
-  --primary: #7c3aed; /* violet-600 */
-  --second-primary: #ddd6fe; /* violet-200 */
-  --bg-primary: #ede9fe; /* violet-100 */
+ /* --primary: #7c3aed; /* violet-600 */
+/*  --second-primary: #ddd6fe;
+  --bg-primary: #ede9fe; 
 
-  --secondary: #4b5563; /* gray-600 */
-  --secondary-light: #9ca3af; /* gray-400 */
-  --secondary-2: #6b7280; /* gray-500 */
-  --text-secondary: #1f2937; /* gray-800 */
-  --border-secondary: #e5e7eb; /* gray-300 */
-  --label-secondary: #9ca3af; /* gray-400 */
-  --bg-secondary: #f9fafb; /* gray-50 */
+  --secondary: #4b5563; 
+  --secondary-light: #9ca3af;  
+  --secondary-2: #6b7280;  
+  --text-secondary: #1f2937;  
+  --border-secondary: #e5e7eb;  
+  --label-secondary: #9ca3af; 
+  --bg-secondary: #f9fafb;
 
-  --success: #22c55e; /* green-500 */
-  --danger: #ef4444; /* red-500 */
-  --warning: #f59e0b; /* amber-500 */
+  --success: #22c55e; 
+  --danger: #ef4444;
+  --warning: #f59e0b; 
 }
 
 /* Dark Mode */
-.dark {
-  --primary-light: #c4b5fd; /* violet-300 */
-  --primary: #8b5cf6; /* violet-500 (روشن‌تر برای خوانایی در پس‌زمینه تیره) */
-  --second-primary: #4c1d95; /* violet-900 */
-  --bg-primary: #0f172a; /* slate-900 */
 
-  --secondary: #d1d5db; /* gray-300 */
-  --secondary-light: #6b7280; /* gray-500 */
-  --secondary-2: #9ca3af; /* gray-400 */
-  --text-secondary: #f3f4f6; /* gray-100 */
-  --border-secondary: #334155; /* slate-700 */
-  --label-secondary: #6b7280; /* gray-500 */
-  --bg-secondary: #1e293b; /* slate-800 */
 
-  --success: #4ade80; /* green-400 */
-  --danger: #f87171; /* red-400 */
-  --warning: #fbbf24; /* amber-400 */
-}
 
 /*Creating Custom Components*/
-@layer components {
+/*@layer components {
   .input-base {
     @apply w-full border-b-2 border-border-secondary bg-transparent  outline-none 
            transition-all duration-300 placeholder-transparent focus:border-violet-600 text-gray-500;
@@ -141,15 +125,15 @@ body {
   user-select: none;
   background-color: rgb(var(--background-app-rgb));
   overflow-y: auto !important; /* همیشه فضای اسکرول‌بار را رزرو می‌کند تا پرش ایجاد نشود */
-}
+/*}
 
-* {
+/** {
   box-sizing: border-box;
   scroll-behavior: smooth;
   outline: none;
   /*padding: 0;
   margin: 0;*/
-}
+/*}
 
 button {
   cursor: pointer;
@@ -164,20 +148,20 @@ button:disabled {
 }
 
 /* inupt number */
-input::-webkit-outer-spin-button,
+/*input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   /* display: none; <- Crashes Chrome on hover */
-  -webkit-appearance: none;
+ /* -webkit-appearance: none;
   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-}
+/*}
 
 input[type="number"] {
   -moz-appearance: textfield; /* Firefox */
-}
+/*}
 
 /* TABLE */
 
-table {
+/*table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
@@ -204,7 +188,7 @@ table td {
 }
 
 /*  react tag input */
-.input-style {
+/*.input-style {
   width: 48px !important;
   height: 48px !important;
   text-align: center;
@@ -287,5 +271,273 @@ table td {
 
 .datepickerlabel {
   color: #7c3aed;
+  font-size: 13px;
+}*/
+@import url("/fonts.css");
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary-light: var(--primary-light);
+  --color-primary: var(--primary);
+  --color-second-primary: var(--second-primary);
+  --color-bg-primary: var(--bg-primary);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-2: var(--secondary-2);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-secondary: var(--border-secondary);
+  --color-label-secondary: var(--label-secondary);
+  --color-bg-secondary: var(--bg-secondary);
+
+  /* Status Colors */
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+/* Light Mode (Default) */
+:root,
+.light {
+  --primary-light: var(--color-violet-400, #a78bfa);
+  --primary: var(--color-violet-600, #7c3aed);
+  --second-primary: var(--color-violet-200, #ddd6fe);
+  --bg-primary: var(--color-violet-100, #ede9fe);
+
+  --secondary: var(--color-gray-600, #4b5563);
+  --secondary-light: var(--color-gray-400, #9ca3af);
+  --secondary-2: var(--color-gray-500, #6b7280);
+  --text-secondary: var(--color-gray-800,#1f2937);
+  --border-secondary: var(--color-gray-300, #e5e7eb);
+  --label-secondary: var(--color-gray-400, #9ca3af);
+  --bg-secondary: var(--color-gray-50, #f9fafb);
+
+  --success: var(--color-green-500, #22c55e);
+  --danger: var(--color-red-500, #ef4444);
+  --warning: var(--color-amber-500, #f59e0b);
+}
+
+/* Dark Mode */
+.dark {
+  --primary-light: var(--color-violet-300, #c4b5fd);
+  --primary: var(--color-violet-400, #8b5cf6); /* در دارک مود روشن‌تر برای خوانایی */
+  --second-primary: var(--color-violet-800, #4c1d95);
+  --bg-primary: var(--color-slate-900, #0f172a);
+
+  --secondary: var(--color-gray-300, #d1d5db);
+  --secondary-light: var(--color-gray-500, #6b7280);
+  --secondary-2: var(--color-gray-400, #9ca3af);
+  --text-secondary: var(--color-gray-200, #f3f4f6);
+  --border-secondary: var(--color-slate-700, #334155);
+  --label-secondary: var(--color-gray-500, #6b7280);
+  --bg-secondary: var(--color-slate-800, #cbd3e0);
+
+  --success: var(--color-green-400, #4ade80);
+  --danger: var(--color-red-400, #f87171);
+  --warning: var(--color-amber-400, #fbbf24);
+}
+
+/*Creating Custom Components*/
+@layer components {
+  .input-base {
+    @apply w-full border-b-2 border-border-secondary bg-transparent outline-none 
+           transition-all duration-300 placeholder-transparent focus:border-primary text-secondary;
+  }
+  .label-base {
+    @apply absolute right-0 top-0 text-label-secondary transition-all duration-300 font-bold;
+  }
+
+  .btn-primary {
+    @apply bg-primary-light w-full text-white px-6 py-2 rounded-lg hover:bg-primary transition;
+  }
+  .btn-secondary {
+    @apply bg-text-secondary  text-secondary-light px-4 py-1 rounded-lg hover:bg-secondary transition;
+  }
+  .badge {
+    @apply inline-block whitespace-nowrap rounded-xl px-2 py-0.5;
+  }
+  .badge--primary {
+    @apply bg-bg-primary text-primary;
+  }
+  .badge--success {
+    @apply bg-success text-white;
+  }
+  .badge--secondary {
+    @apply bg-secondary-light text-white;
+  }
+  .badge--danger {
+    @apply bg-danger text-white;
+  }
+  .dropdown-item {
+    @apply relative block px-4 py-3 text-secondary-2
+    transition-all duration-300
+    hover:bg-primary/50 hover:text-white;
+  }
+
+  .dropdown-item::before {
+    content: "";
+    @apply absolute left-0 top-2 bottom-2 w-1 rounded-r-full
+    bg-white opacity-0 transition-all duration-300;
+  }
+
+  .dropdown-item:hover::before {
+    @apply opacity-100;
+  }
+}
+
+html,
+body {
+  font-family: "Vazir";
+  min-height: 100vh;
+  user-select: none;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  overflow-y: auto !important;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+}
+button:disabled {
+  cursor: default;
+  background-color: var(--color-secondary-light);
+  opacity: 0.5;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+/* input number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* TABLE */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table td,
+table th {
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+table th {
+  padding: 0.6rem 1rem;
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+}
+
+table td {
+  font-size: 0.85rem;
+  padding: 1rem 0.5rem;
+  color: var(--color-text-secondary);
+  font-weight: 700;
+}
+
+/* react tag input */
+.input-style {
+  width: 48px !important;
+  height: 48px !important;
+  text-align: center;
+  border: 2px solid transparent;
+  color: var(--color-secondary);
+  border-radius: 0.5rem;
+  background-color: var(--color-bg-secondary);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease-in-out;
+}
+
+.input-style:focus {
+  outline: none;
+  border-color: var(--color-primary-light);
+  transform: scale(1.05);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 425px) {
+  .input-style {
+    width: 30px !important;
+    height: 35px !important;
+  }
+}
+
+.rti--container {
+  width: 16rem;
+  min-height: 44px;
+  border: 1px solid var(--color-border-secondary);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  color: var(--color-text-secondary);
+  gap: 0.5rem;
+  align-items: center;
+  background-color: var(--color-bg-secondary);
+}
+
+.rti--container:focus-within {
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.15);
+}
+
+.rti--input {
+  flex: 1;
+  background: transparent;
+}
+
+.rti--tag {
+  background: var(--color-primary-light);
+  color: white;
+  border-radius: 9999px;
+  padding: 2px 8px;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.deadline-input {
+  background-color: var(--color-bg-secondary);
+  padding: 2px 9px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  width: 16rem;
+  border: 1px solid var(--color-border-secondary);
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+  outline: none;
+}
+
+.deadline-input:focus {
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.15);
+}
+
+.datepickerlabel {
+  color: var(--color-primary);
   font-size: 13px;
 }

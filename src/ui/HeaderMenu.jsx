@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
 import useOutsideClick from "../hooks/useOutsideClick";
-import Logout from "../features/authentications/LogOut"
+import Logout from "../features/authentications/LogOut";
 import UserAvatar from "../features/authentications/UserAvatar";
 import {
   HiOutlineUser,
@@ -39,10 +39,10 @@ export default function HeaderMenu() {
           />
         </svg>
       </button>
-      <DarkModeToggle />
+      <DarkModeToggle/>
       {open && (
         <div
-          className={`absolute top-12 left-0 lg:right-[-16px] z-[9999] w-64 p-2 rounded-xl bg-white shadow-xl
+          className={`absolute top-12 left-0 lg:right-[-16px] z-[9999] w-64 p-2 rounded-xl bg-bg-secondary text-text-secondary border border-border-secondary shadow-xl
         transition-all duration-300 ease-in-out origin-top overflow-hidden
     ${
       open ?
@@ -51,9 +51,9 @@ export default function HeaderMenu() {
     }
   `}
         >
-            <div className="flex items-center px-2 gap-x-2  border-b pb-2 border-border-secondary">
-           <UserAvatar/> 
-           </div>
+          <div className="flex items-center px-2 gap-x-2  border-b pb-2 border-border-secondary">
+            <UserAvatar />
+          </div>
           <Link
             to="dashboard"
             className="dropdown-item flex items-center gap-3"
@@ -61,8 +61,8 @@ export default function HeaderMenu() {
             <HiOutlineUser className="w-5 h-5" />
             <span>حساب کاربری</span>
           </Link>
-          <Link className="dropdown-item flex w-full items-center gap-3 text-red-500 hover:bg-red-50 hover:text-red-600">
-           <Logout/>
+          <Link className="dropdown-item flex w-full items-center gap-3 text-danger hover:bg-danger/10">
+            <Logout />
           </Link>
         </div>
       )}

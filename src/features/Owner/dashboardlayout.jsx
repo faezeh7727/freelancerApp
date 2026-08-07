@@ -1,0 +1,19 @@
+/** @format */
+
+import React from "react";
+import DashboardHeader from "./dashboardHeader";
+import Stats from "./stats";
+import useOwnerProjects from "../projects/useOwnerProjects";
+import Loading from "../../ui/Loading";
+function Dashboard() {
+  const { isLoading, projects } = useOwnerProjects();
+  if (isLoading) return <Loading />;
+  return (
+    <div>
+      <DashboardHeader />
+      <Stats projects={projects} />
+    </div>
+  );
+}
+
+export default Dashboard;

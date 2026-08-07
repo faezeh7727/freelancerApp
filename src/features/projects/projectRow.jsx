@@ -12,7 +12,7 @@ import CreatProjectForm from "../projects/creatProjectForm";
 import ToggleProjectStatus from "./ToggleProjectStatus";
 import { Link } from "react-router-dom";
 import { HiEye } from "react-icons/hi";
-
+import { FaTrash } from "react-icons/fa";
 export default function ProjectRow({ project, index }) {
   const [isEditOpen, setisEditOpen] = useState(false);
   const [isDeleteOpen, setisDeleteOpen] = useState(false);
@@ -36,11 +36,9 @@ export default function ProjectRow({ project, index }) {
       </td>
       <td>{project.freelancer?.name || "-"}</td>
       <td>
-        <ToggleProjectStatus
-         project={project}
-        />
+        <ToggleProjectStatus project={project} />
       </td>
-      <td >
+      <td>
         <button onClick={() => setisEditOpen(true)}>
           <img
             className="w-5 ml-3"
@@ -59,11 +57,7 @@ export default function ProjectRow({ project, index }) {
           />
         </Modal>
         <button onClick={() => setisDeleteOpen(true)}>
-          <img
-            className="w-6 mt-1"
-            src="/public/images/trash-bin-2-svgrepo-com.svg"
-            alt="trash"
-          />
+           <FaTrash className="w-5 h-5 text-secondary-2" />
         </button>
         <Modal
           open={isDeleteOpen}
@@ -84,7 +78,7 @@ export default function ProjectRow({ project, index }) {
       </td>
       <td className="align-middle text-center  ">
         <Link to={project._id}>
-        <HiEye className="w-5 h-5 text-gray-500" />
+          <HiEye className="w-5 h-5 text-secondary hover:text-primary transition-colors" />
         </Link>
       </td>
     </Table.Row>

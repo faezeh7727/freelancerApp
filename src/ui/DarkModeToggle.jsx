@@ -7,7 +7,8 @@ export default function DarkModeToggle() {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
   return (
     <div>
-      <button onClick={toggleDarkMode}>
+      <button className="  bg-bg-secondary/80 backdrop-blur-md p-1 rounded-xl border border-border-secondary shadow-md"
+      onClick={toggleDarkMode}>
         {isDarkMode ?
           <HiOutlineMoon className="w-6 h-6  text-primary-light" />
         : <HiOutlineSun className="w-6 h-6  text-primary-light " />}
@@ -15,3 +16,4 @@ export default function DarkModeToggle() {
     </div>
   );
 }
+ 

@@ -51,7 +51,6 @@ export default function CheckOTPForm({
   };
 
   //timer
-
   useEffect(() => {
     const timer = time > 0 && setInterval(() => setTime((t) => t - 1), 1000);
     return () => {
@@ -65,12 +64,12 @@ export default function CheckOTPForm({
         {otpResponse && (
           <div
             dir="rtl"
-            className="flex items-center justify-between gap-2 bg-gray-50 border border-gray-100 rounded-lg px-3 py-2 my-4 shadow-sm w-full max-w-sm mx-auto"
+            className="flex items-center justify-between gap-2 bg-bg-primary/50 border border-border-secondary rounded-lg px-3 py-2 my-4 shadow-sm w-full max-w-sm mx-auto"
           >
-            <span className="text-xs sm:text-sm text-gray-600 leading-6">
+            <span className="text-xs sm:text-sm text-text-secondary leading-6">
               {" "}
               کد تایید برای شماره{" "}
-              <span className="text-primary-light font-bold ">
+              <span className="text-primary font-bold ">
                 {otpResponse.phoneNumber}
               </span>{" "}
               برابر است با{" "}
@@ -90,10 +89,10 @@ export default function CheckOTPForm({
         )}
       </div>
 
-      <div className="flex items-center flex-col sm:flex-row justify-between">
+      <div className="flex items-center flex-col sm:flex-row justify-between gap-2">
         <div className="min-h-[32px] flex items-center">
           {time > 0 ?
-            <div className="flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-600 rounded-full border border-blue-100 animate-pulse">
+            <div className="flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full border border-primary/20 animate-pulse">
               <HiOutlineClock className="w-5 h-5" />
               <span>{formatTime(time)}</span>
               <p className="text-xs font-medium">
@@ -102,7 +101,7 @@ export default function CheckOTPForm({
             </div>
           : <button
               onClick={onResendOtp}
-              className="text-sm font-semibold text-primary hover:text-primary-dark transition-all flex items-center gap-1 group"
+              className="text-sm font-semibold text-primary hover:text-primary-light transition-all flex items-center gap-1 group"
             >
               <span>ارسال مجدد کد تایید</span>
               <BsArrowClockwise className="h-4 w-4 transform group-hover:rotate-180 transition-transform duration-500" />
@@ -112,9 +111,9 @@ export default function CheckOTPForm({
 
         <button
           onClick={onBack}
-          className="flex items-center gap-2 mt-3 text-gray-600  transition-colors border border-border-secondary transition-colors p-2 rounded-lg hover:bg-primary-light hover:text-white"
+          className="flex items-center gap-2 mt-3 sm:mt-0 text-secondary border border-border-secondary transition-colors p-2 rounded-lg hover:bg-primary hover:text-white"
         >
-          <BsArrowRight className="w-5 h-5  " />
+          <BsArrowRight className="w-5 h-5" />
         </button>
       </div>
       <form
