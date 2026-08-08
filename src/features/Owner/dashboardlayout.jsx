@@ -1,13 +1,14 @@
 /** @format */
 
-import React from "react";
-import DashboardHeader from "./dashboardHeader";
-import Stats from "./stats";
 import useOwnerProjects from "../projects/useOwnerProjects";
+import Stats from "./stats";
 import Loading from "../../ui/Loading";
-function Dashboard() {
+import DashboardHeader from"./dashboardHeader"
+function DashboardLayout() {
   const { isLoading, projects } = useOwnerProjects();
+
   if (isLoading) return <Loading />;
+
   return (
     <div>
       <DashboardHeader />
@@ -15,5 +16,4 @@ function Dashboard() {
     </div>
   );
 }
-
-export default Dashboard;
+export default DashboardLayout;
