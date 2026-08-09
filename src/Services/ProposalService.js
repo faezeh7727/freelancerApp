@@ -8,3 +8,4 @@ export function changeproposalstatusApi({ id, data }) {
 export function getproposalsApi() {
   return http.get(`/proposal/list`).then(({ data }) => data.data);
 }
+

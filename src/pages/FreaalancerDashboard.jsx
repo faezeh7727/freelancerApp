@@ -1,12 +1,13 @@
 /** @format */
 
 import React from "react";
-import DashboardLayout from "c:/Users/Amoon/Downloads/freelnacer-app-frontend/src/features/freelnacer/DashboardLayout";
+import Dashboardlayout from "../features/Freelancer/dashboardllayout";
 
 function FreaalancerDashboard() {
   return (
     <div>
-      <DashboardLayout/>
+<Dashboardlayout/>
+    
     </div>
   );
 }

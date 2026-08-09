@@ -9,14 +9,10 @@ import { BsCollection } from "react-icons/bs";
 //Statistics prpposals
 function Stats({ proposals }) {
   const numOfproposals = proposals.length;
-
-  const Acceptedproposals = proposals.map((proposal) => proposal === 2).length;
+  const acceptedProposals = proposals.filter((p) => p.status === 2);
 
   //proposals price= Acceptedproposals =total price of them
-  const balance = Acceptedproposals.reduce(
-    (total, proposal) => total + proposal.price,
-    0,
-  );
+  const balance = acceptedProposals.reduce((total, proposal) => total + proposal.price, 0);
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 ">
@@ -29,7 +25,7 @@ function Stats({ proposals }) {
       <Stat
         color="yellow"
         title="پروپوزال های قبول شده"
-        value={Acceptedproposals.length}
+        value={acceptedProposals.length}
         icon={<CiBadgeDollar className="w-6 h-6 md:w-12 md:h-12" />}
       />
       <Stat

@@ -5,9 +5,9 @@ import Dashboardheader from "./Dashboardheader";
 import Stats from "./FreelancerStats";
 import useproposals from "../Proposals/useProposals";
 import Loading from "../../ui/Loading";
-function Dashboardllayout() {
+function Dashboardlayout() {
   const { proposals, isLoading } = useproposals();
-  if (isLoading) return Loading;
+  if (isLoading) return <Loading/>;
   return (
     <div>
       <Dashboardheader />
@@ -16,4 +16,4 @@ function Dashboardllayout() {
   );
 }
 
-export default Dashboardllayout;
+export default Dashboardlayout;
