@@ -3,7 +3,7 @@ import ProposalTabel from '../features/Proposals/ProposalTabel'
 function Proposals() {
   return (
     <div>
-      <h1 className="text-secondary text-xl my-2">پروپوزال های شما</h1>
+      <h1 className="text-secondary text-xl my-5">پروپوزال های شما</h1>
       <ProposalTabel/>
     </div>
   )

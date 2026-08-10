@@ -13,7 +13,7 @@ function Stats({ projects }) {
   const numOfAcceptedProjects = projects.filter((project) => project.Stats === 2).length;
 
   const numOfProposal = projects.reduce((total, project) => {
-    return total + (project.proposal?.length || 0);
+    return total + (project.proposals?.length || 0);
   }, 0);
 
   return (

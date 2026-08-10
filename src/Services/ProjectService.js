@@ -32,3 +32,10 @@ export function ToggleProjectStatusApi({ id, data }) {
 export function getProjectApi(id) {
   return http.get(`/project/${id}`).then(({ data }) => data.data);
 }
+
+//get all projects
+export function getProjectsApi() {
+  return http.get(`/project/list`).then(({ data }) => data.data);
+}
+
+
