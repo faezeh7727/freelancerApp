@@ -24,7 +24,6 @@ export default function RHFSelect({
         render={({ field }) => (
           <Listbox value={field.value} onChange={field.onChange}>
             <div className="relative">
-              {/* دکمه انتخاب */}
               <Listbox.Button className="relative w-full py-2.5 pr-3 pl-10 text-right bg-bg-secondary border border-border-secondary text-text-secondary rounded-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/20">
                 <span className="block truncate text-primary">
                   {options.find((o) => o.value === field.value)?.label ||
@@ -34,8 +33,6 @@ export default function RHFSelect({
                   <IoChevronDown className="text-secondary" />
                 </span>
               </Listbox.Button>
-
-              {/* لیست گزینه‌ها */}
               <Listbox.Options className="absolute z-10 w-full py-1 mt-1 overflow-auto bg-bg-secondary border-2 border-border-secondary text-text-secondary rounded-lg shadow-lg max-h-60 ring-1 ring-opacity-5 focus:outline-none">
                 {options.map((option) => (
                   <Listbox.Option
