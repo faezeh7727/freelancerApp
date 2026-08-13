@@ -281,6 +281,7 @@ table td {
   --color-primary-light: var(--primary-light);
   --color-primary: var(--primary);
   --color-second-primary: var(--second-primary);
+  --color-second-primary-2: var(--second-primary-2);
   --color-bg-primary: var(--bg-primary);
 
   --color-secondary: var(--secondary);
@@ -305,6 +306,7 @@ table td {
   --primary-light: var(--color-violet-400, #a78bfa);
   --primary: var(--color-violet-600, #7c3aed);
   --second-primary: var(--color-violet-200, #ddd6fe);
+   --second-primary-2: var(--color-violet-100, #ddd6fe);
   --bg-primary: var(--color-violet-100, #ede9fe);
 
   --secondary: var(--color-gray-600, #4b5563);
@@ -325,6 +327,7 @@ table td {
   --primary-light: var(--color-violet-300, #c4b5fd);
   --primary: var(--color-violet-400, #8b5cf6); /* در دارک مود روشن‌تر برای خوانایی */
   --second-primary: var(--color-violet-800, #4c1d95);
+   --second-primary-2: var(--color-violet-100, #ddd6fe);
   --bg-primary: var(--color-slate-900, #0f172a);
 
   --secondary: var(--color-gray-300, #d1d5db);

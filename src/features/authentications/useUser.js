@@ -11,4 +11,5 @@ export default function useUser(params) {
   });
   const { user } = data || {};
   return { isloading, user };
+
 }

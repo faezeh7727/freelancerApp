@@ -34,8 +34,8 @@ export function getProjectApi(id) {
 }
 
 //get all projects
-export function getProjectsApi() {
-  return http.get(`/project/list`).then(({ data }) => data.data);
+export function getallProjectsApi(qs) {
+  return http.get(`/project/list${qs}`).then(({ data }) => data.data);
 }
 
 

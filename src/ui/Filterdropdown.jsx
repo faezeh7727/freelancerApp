@@ -1,9 +1,8 @@
 /** @format */
 
-
 import React from "react";
 import { useSearchParams } from "react-router-dom";
-import CustomSelect from "./Select"; 
+import CustomSelect from "./Select";
 
 function Filterdropdown({ options, filterField }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -13,8 +12,8 @@ function Filterdropdown({ options, filterField }) {
     searchParams.set(filterField, newValue);
     setSearchParams(searchParams);
   }
-
-  return (
+    
+     return (
     <CustomSelect
       value={value}
       onChange={handleChange}
@@ -22,7 +21,8 @@ function Filterdropdown({ options, filterField }) {
       placeholder="فیلتر دسته بندی"
     />
   );
-}
+  }
+
+ 
 
 export default Filterdropdown;
-
