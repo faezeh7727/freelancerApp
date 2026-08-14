@@ -12,6 +12,7 @@ import { HiOutlineClock, HiOutlinePencilAlt } from "react-icons/hi";
 import Loading from "../../ui/Loading";
 import { useEffect } from "react";
 import { formatTime } from "../../utils/FormatTime";
+import getRedirectPathByRole from "../../utils/getRedirectPathByRole";
 
 const ReSendTime = 90;
 
@@ -26,7 +27,7 @@ export default function CheckOTPForm({
   const [time, setTime] = useState(ReSendTime);
   const Navigate = useNavigate();
 
-  const { isPending, mutateAsync } = useMutation({
+  const { isPending, mutateAsync :checkOtp } = useMutation({
     //mutation function
     mutationFn: CheckOtp,
   });
@@ -34,7 +35,7 @@ export default function CheckOTPForm({
   const CheckOtpHandler = async (e) => {
     e.preventDefault();
 
-    try {
+    /* try {
       const { user, message } = await mutateAsync({ phoneNumber, otp });
       toast.success(message);
       if (!user.isActive) return Navigate("/complete-profile");
@@ -45,6 +46,19 @@ export default function CheckOTPForm({
       }
       if (user.role === "OWNER") return Navigate("/owner");
       if (user.role === "FREELANCER") return Navigate("/freelancer");
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }*/
+    try {
+      const { user, message } = await checkOtp({ phoneNumber, otp });
+      toast.success(message);
+
+      if (user.status === 1) {
+        toast("پروفایل شما در انتظار تایید است", { icon: "👏" });
+      }
+
+      const redirectPath = getRedirectPathByRole(user);
+      Navigate(redirectPath, { replace: true });
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }

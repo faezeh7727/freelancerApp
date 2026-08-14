@@ -18,6 +18,7 @@ import SubmitedProjects from "./pages/SubmitedProjects";
 import Proposals from "./pages/Proposals";
 import FreaalancerDashboard from "./pages/FreaalancerDashboard";
 import ProtectedRoute from "./ui/ProtectedRoute";
+import NotAccess from "./pages/NotAccess";
 // Create a client
 const queryClient = new QueryClient();
 function App() {
@@ -57,6 +58,7 @@ function App() {
             <Route path="proposals" element={<Proposals />} />
             <Route path="projects" element={<SubmitedProjects />} />
           </Route>
+          <Route path="/not-access" element={<NotAccess />} />
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

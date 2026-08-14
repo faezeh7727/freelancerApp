@@ -10,6 +10,7 @@ import Loading from "../../ui/Loading";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import RadioInputGroup from "../../ui/RadioinputGroup";
+import  getRedirectPathByRole  from "../../utils/getRedirectPathByRole";
 export default function CompleteProfileForm() {
   const {
     handleSubmit,
@@ -19,20 +20,20 @@ export default function CompleteProfileForm() {
   } = useForm();
 
   const Navigate = useNavigate();
-  const { mutateAsync, isPending } = useMutation({
+  const { mutateAsync: completeProfile, isPending } = useMutation({
     mutationFn: CompleteProfile,
   });
   const onSubmit = async (data) => {
     try {
-      const { user, message } = await mutateAsync(data);
+      const { user, message } = await completeProfile(data);
       toast.success(message);
       if (user.status !== 2) {
         Navigate("/");
         toast("پروفایل شما در انتظار تایید است", { icon: "👏" });
         return;
       }
-      if (role === "OWNER") return Navigate("/owner");
-      if (role === "FREELANCER") return Navigate("/freelancer");
+      const redirectPath = getRedirectPathByRole(user);
+      Navigate(redirectPath, { replace: true });
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }

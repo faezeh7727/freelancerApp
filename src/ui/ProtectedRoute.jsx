@@ -7,14 +7,20 @@ import { useEffect } from "react";
 
 
 function ProtectedRoute({ children }) {
-  const { isAuthenticated, isloading, isAuthorized } = useAuthorize();
+  const { isAuthenticated, isLoading, isAuthorized } = useAuthorize();
   const navigate = useNavigate();
+  
   useEffect(() => {
-    if (!isAuthenticated && !isloading) navigate("/auth");
-    if (!isAuthorized && !isloading) navigate("/not-access" ,{ replace: true });
-  }, [isAuthenticated, isAuthorized, isloading, navigate]);
+    if (!isLoading) {
+      if (!isAuthenticated) {
+        navigate("/auth", { replace: true });
+      } else if (!isAuthorized) {
+        navigate("/not-access", { replace: true });
+      }
+    }
+  }, [isAuthenticated, isAuthorized, isLoading, navigate]);
 
-  if (isloading)
+  if (isLoading)
     return (
       <div className="h-screen flex items-center justify-center bg-secondary">
         <Loading />
@@ -22,7 +28,8 @@ function ProtectedRoute({ children }) {
     );
 
   if (isAuthenticated && isAuthorized) return children;
-  
+
+  return null;
 }
 
 export default ProtectedRoute;

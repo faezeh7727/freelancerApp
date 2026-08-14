@@ -5,7 +5,7 @@ import useUser from "./useUser";
 import { useLocation } from "react-router-dom";
 
 export default function useAuthorize() {
-  const { isloading, user } = useUser();
+  const { isLoading, user } = useUser();
   const { pathname } = useLocation(); //example:owner/project
 
   let isAuthenticated = false;
@@ -21,19 +21,19 @@ export default function useAuthorize() {
   //get role from pathname url
   //at(1): first index of pathname
   const pathnameRole = pathname.split("/").at(1);
-  
-  if (Object.keys(RoleKeys).includes(pathnameRole)) {
+
+   if (Object.keys(RoleKeys).includes(pathnameRole)) {
     if (user && user.role=== RoleKeys[pathnameRole]) isAuthorized = true;
   }
+  /*if (Object.keys(RoleKeys).includes(pathnameRole)) {
+    if (
+      user &&
+      (user.role === RoleKeys[pathnameRole] ||
+        user.role?.toUpperCase() === RoleKeys[pathnameRole])
+    ) {
+      isAuthorized = true;
+    }
+  }*/
 
-  console.log("Check:", { 
-  pathnameRole, 
-  userRole: user?.role, 
-  expectedRole: RoleKeys[pathnameRole],
-  isMatch: user?.role === RoleKeys[pathnameRole] 
-});
-
-
-
-  return { user, isloading, isAuthenticated, isAuthorized };
+  return { user, isLoading, isAuthenticated, isAuthorized };
 }
