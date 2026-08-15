@@ -1,16 +1,19 @@
 /** @format */
 import SendOTPForm from "./SendOTPForm";
 import CheckOTPForm from "./CheckOTPForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { GetOtp } from "../../Services/AuthService";
 import Loading from "../../ui/Loading";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import { data } from "react-router-dom";
+import { data, useNavigate } from "react-router-dom";
+import useUser from "./useUser";
 export default function AuthContainer() {
   const [step, setStep] = useState(1);
   const [resendCounter, setResendCounter] = useState(0);
+  const { user } = useUser();
+  const navigate = useNavigate();
 
   const {
     isPending: isSendingOtp,
@@ -20,7 +23,7 @@ export default function AuthContainer() {
     mutationFn: GetOtp,
   });
   const { handleSubmit, register, getValues } = useForm();
-//send otp handler
+  //send otp handler
   const SendOtpHandler = async (data) => {
     try {
       await mutateAsync(data);
@@ -29,6 +32,11 @@ export default function AuthContainer() {
       toast.error(error?.response?.data?.message);
     }
   };
+
+  //if 
+  useEffect(() => {
+    if (user) navigate("/", { replace: true });
+  }, [user,navigate]);
 
   // resend handler
   const handleResendOtp = async () => {
@@ -57,7 +65,7 @@ export default function AuthContainer() {
       case 2:
         return (
           <CheckOTPForm
-            key={resendCounter} 
+            key={resendCounter}
             onResendOtp={handleResendOtp}
             phoneNumber={getValues("phoneNumber")}
             onBack={() => setStep((step) => step - 1)}

@@ -19,6 +19,9 @@ import Proposals from "./pages/Proposals";
 import FreaalancerDashboard from "./pages/FreaalancerDashboard";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import NotAccess from "./pages/NotAccess";
+import AdminLayout from "./features/Admin/AdminLayout";
+import AdminDashboard from "./pages/AdminDashboard";
+import Users from "./pages/Users";
 // Create a client
 const queryClient = new QueryClient();
 function App() {
@@ -55,6 +58,21 @@ function App() {
           >
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<FreaalancerDashboard />} />
+            <Route path="proposals" element={<Proposals />} />
+            <Route path="projects" element={<SubmitedProjects />} />
+          </Route>
+          {/**admin Ruotes */}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="users" element={<Users />} />
             <Route path="proposals" element={<Proposals />} />
             <Route path="projects" element={<SubmitedProjects />} />
           </Route>

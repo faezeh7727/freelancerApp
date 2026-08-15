@@ -3,7 +3,7 @@
 import useOwnerProjects from "../projects/useOwnerProjects";
 import Stats from "./stats";
 import Loading from "../../ui/Loading";
-import DashboardHeader from"./dashboardHeader"
+import Dashboardheader from "../../ui/Dashboardheader";
 function DashboardLayout() {
   const { isLoading, projects } = useOwnerProjects();
 

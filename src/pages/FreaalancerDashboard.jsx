@@ -6,8 +6,7 @@ import Dashboardlayout from "../features/Freelancer/dashboardllayout";
 function FreaalancerDashboard() {
   return (
     <div>
-<Dashboardlayout/>
-    
+      <Dashboardlayout />
     </div>
   );
 }

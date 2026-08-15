@@ -11,6 +11,9 @@ export default function useAuthorize() {
   let isAuthenticated = false;
   if (user) isAuthenticated = true;
   let isAuthorized = false;
+  let isVerified = false;
+
+  if (user && Number(user.status) === 2) isVerified = true;
 
   const RoleKeys = {
     admin: "ADMIN",
@@ -22,18 +25,9 @@ export default function useAuthorize() {
   //at(1): first index of pathname
   const pathnameRole = pathname.split("/").at(1);
 
-   if (Object.keys(RoleKeys).includes(pathnameRole)) {
-    if (user && user.role=== RoleKeys[pathnameRole]) isAuthorized = true;
+  if (Object.keys(RoleKeys).includes(pathnameRole)) {
+    if (user && user.role === RoleKeys[pathnameRole]) isAuthorized = true;
   }
-  /*if (Object.keys(RoleKeys).includes(pathnameRole)) {
-    if (
-      user &&
-      (user.role === RoleKeys[pathnameRole] ||
-        user.role?.toUpperCase() === RoleKeys[pathnameRole])
-    ) {
-      isAuthorized = true;
-    }
-  }*/
 
-  return { user, isLoading, isAuthenticated, isAuthorized };
+  return { user, isLoading, isAuthenticated, isAuthorized, isVerified };
 }
