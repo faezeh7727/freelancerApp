@@ -22,6 +22,8 @@ import NotAccess from "./pages/NotAccess";
 import AdminLayout from "./features/Admin/AdminLayout";
 import AdminDashboard from "./pages/AdminDashboard";
 import Users from "./pages/Users";
+import Profile from "./pages/Profile";
+
 // Create a client
 const queryClient = new QueryClient();
 function App() {
@@ -46,6 +48,7 @@ function App() {
             <Route path="dashboard" element={<OwnerDashboard />} />
             <Route path="projects" element={<Projects />} />
             <Route path="projects/:id" element={<SingleProject />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
           {/**freelancer Routes*/}
           <Route
@@ -60,6 +63,7 @@ function App() {
             <Route path="dashboard" element={<FreaalancerDashboard />} />
             <Route path="proposals" element={<Proposals />} />
             <Route path="projects" element={<SubmitedProjects />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
           {/**admin Ruotes */}
           <Route
@@ -75,6 +79,7 @@ function App() {
             <Route path="users" element={<Users />} />
             <Route path="proposals" element={<Proposals />} />
             <Route path="projects" element={<SubmitedProjects />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
           <Route path="/not-access" element={<NotAccess />} />
           <Route path="/" element={<Home />} />

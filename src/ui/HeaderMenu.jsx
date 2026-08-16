@@ -55,11 +55,11 @@ export default function HeaderMenu() {
             <UserAvatar />
           </div>
           <Link
-            to="dashboard"
+            to="profile"
             className="dropdown-item flex items-center gap-3"
           >
             <HiOutlineUser className="w-5 h-5" />
-            <span>حساب کاربری</span>
+            <span> حساب کاربری (پروفایل)</span>
           </Link>
           <Link className="dropdown-item flex w-full items-center gap-3 text-danger hover:bg-danger/10">
             <Logout />

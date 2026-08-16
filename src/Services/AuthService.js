@@ -28,4 +28,10 @@ export const getUsersApi = () =>
   http.get("/admin/user/list").then(({ data }) => data.data);
 
 export const ChangeUserStatusApi = ({ userId, data }) =>
-  http.patch(`/admin/user/verify/${userId}`,data).then(({ data }) => data.data);
+  http
+    .patch(`/admin/user/verify/${userId}`, data)
+    .then(({ data }) => data.data);
+
+// update user profile
+export const UpdateProfileApi = (data) =>
+  http.patch("/user/update", data).then(({ data }) => data.data);
