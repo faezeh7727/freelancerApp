@@ -1,9 +1,8 @@
 /** @format */
 import { Link } from "react-router-dom";
 import WelcomeHero from "../ui/Welcome";
-import DarkModeToggle from "../ui/DarkModeToggle";
 import useUser from "../features/authentications/useUser";
-
+import getRedirectPathByRole from "../utils/getRedirectPathByRole";
 export default function Home() {
   const { user, isloading } = useUser();
   return (
@@ -19,22 +18,21 @@ export default function Home() {
             alt="Logo"
             className="w-10 h-10"
           />
-          <span className="font-bold text-lg text-primary">
+          <span className="font-bold hidden md:block text-lg  text-primary">
             پلتفرم فریلنسری
           </span>
         </div>
         <div className="flex items-center gap-4">
-          <DarkModeToggle />
           {user ?
             <Link
-              to={user.role === "OWNER" ? "/owner" : "/freelancer"}
-              className="btn-primary px-4 py-2 rounded-lg text-sm font-semibold"
+              to={getRedirectPathByRole(user)}
+              className="btn-primary px-1.5 py-2 rounded-lg text-sm font-semibold"
             >
               ورود به داشبورد ({user.name || user.phoneNumber})
             </Link>
           : <Link
               to="/auth"
-              className="btn-primary px-4 py-2 rounded-lg text-sm font-semibold"
+              className="btn-primary px-3 py-1 rounded-lg text-sm font-semibold"
             >
               ورود / ثبت‌نام
             </Link>
@@ -48,8 +46,8 @@ export default function Home() {
 
         <div className="flex flex-wrap justify-center gap-4 mt-2">
           <Link
-            to="/auth"
-            className="btn-primary px-8 py-3 rounded-xl text-base font-bold shadow-lg transition transform hover:-translate-y-0.5"
+            to={user ? getRedirectPathByRole(user) : "/auth"}
+            className="btn-primary px-8 py-3 rounded-xl text-base font-bold shadow-lg hover:shadow-xl transition"
           >
             شروع فعالیت
           </Link>

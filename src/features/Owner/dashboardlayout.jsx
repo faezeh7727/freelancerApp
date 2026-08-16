@@ -11,7 +11,7 @@ function DashboardLayout() {
 
   return (
     <div>
-      <DashboardHeader />
+      <Dashboardheader />
       <Stats projects={projects} />
     </div>
   );

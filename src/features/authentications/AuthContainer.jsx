@@ -33,7 +33,7 @@ export default function AuthContainer() {
     }
   };
 
-  //if 
+  //if user is logged take them to the home page
   useEffect(() => {
     if (user) navigate("/", { replace: true });
   }, [user,navigate]);

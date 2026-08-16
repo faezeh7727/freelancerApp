@@ -10,7 +10,7 @@ import Loading from "../../ui/Loading";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import RadioInputGroup from "../../ui/RadioinputGroup";
-import  getRedirectPathByRole  from "../../utils/getRedirectPathByRole";
+import getRedirectPathByRole from "../../utils/getRedirectPathByRole";
 export default function CompleteProfileForm() {
   const {
     handleSubmit,

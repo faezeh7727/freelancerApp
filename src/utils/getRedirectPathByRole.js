@@ -3,13 +3,10 @@
 export default function getRedirectPathByRole(user) {
   if (!user) return "/auth";
 
-  if (!user.isActive || user.status === 0) {
+  if (!user.role || !user.isActive) {
     return "/complete-profile";
   }
-
-  if (user.status === 1) {
-    return "/complete-profile";
-  }
+  
 
   const role = user.role?.toUpperCase();
 
